@@ -4,20 +4,20 @@ from dash import Dash, dcc, html, Input, Output
 #Notre équipe component
 cards = [
     {
-        "src": "https://via.placeholder.com/300x150",
-        "header": "John Doe",
-        "description": "Software Engineer"
+        "src": "assets/Francis_barette-pdg.jpg",
+        "header": "Francis Barrette",
+        "description": "Président",
+        "LinkedIn": "https://www.linkedin.com/in/francis-barrette-32636384/",
+        "Facebook": "https://www.facebook.com/francis.barrette.31?mibextid=ZbWKwL",
     },
     {
-        "src": "https://via.placeholder.com/300x150",
-        "header": "Jane Doe",
-        "description": "Data Scientist"
+        "src": "assets/jonathan_valliere.png",
+        "header": "Jonathan Vallière",
+        "description": "Vice-président",
+        "LinkedIn": "https://www.linkedin.com/in/jonathan-valli%C3%A8res-7b32a9235/",
+        "Facebook": "https://www.facebook.com/jonathan.vallieres.94?mibextid=ZbWKwL",
     },
-    {
-        "src": "https://via.placeholder.com/300x150",
-        "header": "Bob Smith",
-        "description": "Project Manager"
-    }
+
 ]
 
 card_items = []
@@ -29,6 +29,10 @@ for card in cards:
                 [
                     html.H5(card['header'], className="card-title"),
                     html.P(card['description'], className="card-text"),
+                    dbc.Col([
+                    dbc.NavLink(html.I(className="bi bi-facebook m-2"),href= card['Facebook'], target="_blank"),
+                    dbc.NavLink(html.I(className="bi bi-linkedin m-2"),href= card['LinkedIn'], target="_blank"),
+                    ], className="align-items-center justify-content-center d-flex mt-3")
                 ]
             ),
         ],

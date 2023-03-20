@@ -23,7 +23,7 @@ sidebar = dbc.Col(
             [   #add twitter, facebook,linkedin icons here
                 html.Img(src="assets/logo.png", style={"width":"175px","height":"175px"}),
                 dbc.Col([
-                    dbc.NavLink(html.I(className="bi bi-twitter m-2"),href=""),
+                    dbc.NavLink(html.I(className="bi bi-bank m-2"),href="http://www.fpuqar.ca/", target="_blank"),
                     dbc.NavLink(html.I(className="bi bi-facebook m-2"),href="https://www.facebook.com/fpuqar", target="_blank"),
                     dbc.NavLink(html.I(className="bi bi-linkedin m-2"),href=""),
       ], className="align-items-center justify-content-center d-flex mt-3"),  
