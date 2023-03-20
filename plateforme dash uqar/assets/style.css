@@ -1,0 +1,22 @@
+/* :root = création de variable en css */
+:root {
+  --sidebar-bg-color: #f8f9fa;
+  --sidebar-text-color: black;
+  --sidebar-padding: 2rem 1rem;
+  --sidebar-width: 16rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  padding: var(--sidebar-padding);
+  background-color: var(--sidebar-bg-color);
+  color: var(--sidebar-text-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 1;
+  max-height: fit-content;
+  display: inline-block;
+}
