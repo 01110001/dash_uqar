@@ -24,20 +24,41 @@ card_items = []
 for card in cards:
     card_item = dbc.Card(
         [
-            dbc.CardImg(src=card['src'], top=True),
+            dbc.CardImg(src=card['src'], top=True, className="card-img-top img-fluid p-3"),
             dbc.CardBody(
                 [
                     html.H5(card['header'], className="card-title"),
                     html.P(card['description'], className="card-text"),
-                    dbc.Col([
-                    dbc.NavLink(html.I(className="bi bi-facebook m-2"),href= card['Facebook'], target="_blank"),
-                    dbc.NavLink(html.I(className="bi bi-linkedin m-2"),href= card['LinkedIn'], target="_blank"),
-                    ], className="align-items-center justify-content-center d-flex mt-3")
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                dbc.NavLink(
+                                    html.I(className="bi bi-facebook"),
+                                    href=card['Facebook'],
+                                    target="_blank",
+                                    className="social-link",
+                                ),
+                                width={"size": 2, "order": "first"},
+                            ),
+                            dbc.Col(
+                                dbc.NavLink(
+                                    html.I(className="bi bi-linkedin"),
+                                    href=card['LinkedIn'],
+                                    target="_blank",
+                                    className="social-link",
+                                ),
+                                width={"size": 2, "order": "last"},
+                            ),
+                        ],
+                        className="social-row justify-content-center",
+                    ),
                 ]
             ),
         ],
         style={"width": "18rem", "margin": "10px"},
+        className="team-card text-center mt-5 mb-5 shadow p-3 mb-5 bg-white rounded ",
     )
     card_items.append(card_item)
+
 
 card_row = dbc.Row(card_items, className="justify-content-center mt-5 mb-5")
