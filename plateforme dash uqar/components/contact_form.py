@@ -25,9 +25,11 @@ contact_form = dbc.Col(
                                 [
                                     dbc.Label("Nom", className="form-label"),
                                     dbc.Input(
+                                        id ="name-input",
                                         type="text",
                                         placeholder="Entrez votre nom",
-                                        className="form-control"
+                                        className="form-control",
+                                        required=True,
                                     ),
                                 ],
                                 md=6,
@@ -37,6 +39,7 @@ contact_form = dbc.Col(
                                 [
                                     dbc.Label("Email", className="form-label"),
                                     dbc.Input(
+                                        id ="email-input",
                                         type="email",
                                         placeholder="Entrez votre email",
                                         className="form-control",
@@ -54,6 +57,7 @@ contact_form = dbc.Col(
                                 [
                                     dbc.Label("Message", className="form-label"),
                                     dbc.Textarea(
+                                        id ="message-input",
                                         placeholder="Entrez votre message",
                                         className="form-control",
                                         style={"height": 200}
@@ -63,7 +67,7 @@ contact_form = dbc.Col(
                             ),
                         ]
                     ),
-                    dbc.Button("Envoyer", color="primary", className="mt-3"),
+                    dbc.Button("Envoyer",id ="send-button", color="primary", className="mt-3"),
                 ],
                 md=10,
             ),
