@@ -21,8 +21,9 @@ sidebar = dbc.Col(
     [   
         dbc.Nav(
             [   #add twitter, facebook,linkedin icons here
-                html.Img(src="assets/logo.png", style={"width":"175px","height":"175px"}),
+                html.Img(src="assets/logo.png", style={"width":"235px","height":"180px"}),
                 dbc.Col([
+                    dbc.NavLink(html.I(className="bi bi-instagram m-2"),href="https://www.instagram.com/fpeuqarlevis/", target="_blank"),
                     dbc.NavLink(html.I(className="bi bi-bank m-2"),href="http://www.fpuqar.ca/", target="_blank"),
                     dbc.NavLink(html.I(className="bi bi-facebook m-2"),href="https://www.facebook.com/fpuqar", target="_blank"),
                     dbc.NavLink(html.I(className="bi bi-linkedin m-2"),href=""),
@@ -31,7 +32,7 @@ sidebar = dbc.Col(
                 #add custom icon here
                 dbc.NavLink(
                     custom_nav("Accueil", "bi bi-house-door-fill me-2"),
-                    href="/", 
+                    href="Page/accueil.py", 
                     active="exact", 
                     className="nav-link",
                     ),
@@ -64,20 +65,34 @@ sidebar = dbc.Col(
                     custom_nav("Analyse par entreprise", "bi bi-file-earmark-bar-graph me-2"),
                     href="/analyse-par-entreprise", 
                     active="exact", 
-                    className="nav-link"
+                    className="nav-link",
                 ),
                 dbc.NavLink(
                     custom_nav("Calendrier économique", "bi bi-calendar3 me-2"),
                     href="/calendrier", 
                     active="exact", 
-                    className="nav-link"
+                    className="nav-link",
+                ),
+                dbc.NavLink(
+                    custom_nav("Titres détenus", "bi bi-wallet2 me-2"),
+                    href="/Titres-detenus", 
+                    active="exact", 
+                    className="nav-link",
+                    
+                    
+                ),
+                dbc.NavLink(
+                    custom_nav("Recheche entreprise", "bi bi-search me-2"),
+                    href="/Recheche-entreprise", 
+                    active="exact", 
+                    className="nav-link",
                 ),
             ],
             vertical=True,
             pills=True,
             
         ),
-    ],
+    ], 
     #make this side bar aligned to the left
     className="d-inline-block d-md-block bg-light sidebar ",
 )
