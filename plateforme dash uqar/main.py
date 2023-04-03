@@ -17,13 +17,19 @@ from components.equipe_card import (
     card_row,
 )
 
+from components.titre_comp import (
+    titre,
+)
+
 from components.contact_form import (
     contact_form,
 )
 
+
 from Page import (
     contact,
     equipe,
+    titre,
 
 )
 
@@ -52,6 +58,8 @@ def display_page(pathname):
         return contact.create_layout()
     elif pathname == "/equipe":
         return equipe.create_layout()
+    elif pathname == "/Titres-detenus":
+        return titre.create_layout()
 
 
 
