@@ -1,13 +1,14 @@
 import dash
 import datetime
 import pytz
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, dash_table
 import pandas as pd 
 import plotly.express as px 
 import dash_bootstrap_components as dbc
 import pandas_datareader as pdr
 import datetime
 import plotly.graph_objs as go
+
 
 from components.sidebar import (
     sidebar,
