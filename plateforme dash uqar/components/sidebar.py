@@ -32,7 +32,7 @@ sidebar = dbc.Col(
                 #add custom icon here
                 dbc.NavLink(
                     custom_nav("Accueil", "bi bi-house-door-fill me-2"),
-                    href="Page/accueil.py", 
+                    href="/", 
                     active="exact", 
                     className="nav-link",
                     ),
@@ -94,7 +94,7 @@ sidebar = dbc.Col(
         ),
     ], 
     #make this side bar aligned to the left
-    className="d-inline-block d-md-block bg-light sidebar ",
+    className="d-inline-block d-md-block bg-light sidebar position-fixed",
 )
 
 

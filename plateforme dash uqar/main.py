@@ -8,8 +8,7 @@ import dash_bootstrap_components as dbc
 import pandas_datareader as pdr
 import datetime
 import plotly.graph_objs as go
-
-
+from dash.exceptions import PreventUpdate
 from components.sidebar import (
     sidebar,
 )
@@ -27,10 +26,13 @@ from components.contact_form import (
 )
 
 
+
+
 from Page import (
     contact,
     equipe,
     titre,
+    Accueil,
 
 )
 
@@ -42,18 +44,19 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.
 
 
 
-
 app.layout = dbc.Container(
     dbc.Row(children=[
         dcc.Location(id="url"), 
         dbc.Col(sidebar),
-        dbc.Col(id="page-content", width=9)
+        dbc.Col(id="page-content", width=9),
     ])
-   )
-
+)
 
 # Update page callback
-@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+@app.callback(
+    Output("page-content", "children"), 
+    Input("url", "pathname")
+)
 def display_page(pathname):
     if pathname == "/contact":
         return contact.create_layout()
@@ -61,7 +64,6 @@ def display_page(pathname):
         return equipe.create_layout()
     elif pathname == "/Titres-detenus":
         return titre.create_layout()
-
 
 
 # Run the app
