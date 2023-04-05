@@ -19,7 +19,14 @@ from components.equipe_card import (
 
 from components.titre_comp import (
     titre,
+
 )
+
+from components.stat import (
+    fig_layout,
+
+)
+
 
 from components.contact_form import (
     contact_form,
@@ -33,6 +40,7 @@ from Page import (
     equipe,
     titre,
     Accueil,
+    stat,
 
 )
 
@@ -52,6 +60,10 @@ app.layout = dbc.Container(
     ])
 )
 
+
+
+
+
 # Update page callback
 @app.callback(
     Output("page-content", "children"), 
@@ -64,6 +76,14 @@ def display_page(pathname):
         return equipe.create_layout()
     elif pathname == "/Titres-detenus":
         return titre.create_layout()
+    elif pathname == "/stat":
+        return stat.create_layout()
+
+
+
+
+
+
 
 
 # Run the app
