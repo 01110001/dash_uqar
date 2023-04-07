@@ -6,18 +6,29 @@ from dash import html, dcc, dash_table
 
 # Replace this with your Google Drive file's ID
 file_id = "1TWd1pJQAfuxVn5_cws7zqlQmOKjb-5A8"
-
+file_id_2 = "168QPRnI-A-qXX-f682xVPyERM79aO1Fy" # this is the file id for the second file named performance portefeuille
 # Construct the download URL
 url = f"https://drive.google.com/uc?export=download&id={file_id}"
+url_2 = f"https://drive.google.com/uc?export=download&id={file_id_2}"
 
 response = requests.get(url)
+response_2 = requests.get(url_2)
 response_text = response.text
+response_text_2 = response_2.text
 
 csv_file = StringIO(response_text)
+csv_file_2 = StringIO(response_text_2)
 data = pd.read_csv(csv_file,on_bad_lines='skip',sep=';',encoding='latin-1',decimal=',',thousands='.')
+data_portefeuille = pd.read_csv(csv_file_2,on_bad_lines='skip',sep=';',encoding='latin-1',decimal=',',thousands='.')
 
-# Rename the column
+
+# Rename the column and making the date as index
 data.columns = ['Symbol', 'Date', 'Entreprise', 'Secteur', 'Ponderation', 'Valeur_marchande', 'prix_achat', 'prix_actuelle']
+data_portefeuille.columns = ['Date','rendement','Valeur Portefeuille','dividende','none']
+data_portefeuille['Date'] = pd.to_datetime(data_portefeuille['Date'], format= '%d-%m-%Y')
+data_portefeuille = data_portefeuille.sort_values(by='Date')
+#data_portefeuille.set_index('Date', inplace=True)
+
 
 #sum of the valeur marchande
 total_valeur_marchande = data['Valeur_marchande'].sum()

@@ -27,6 +27,11 @@ from components.stat import (
 
 )
 
+from components.performance import (
+    fig_layout,
+
+)
+
 
 from components.contact_form import (
     contact_form,
@@ -41,6 +46,7 @@ from Page import (
     titre,
     Accueil,
     stat,
+    performance,
 
 )
 
@@ -78,7 +84,8 @@ def display_page(pathname):
         return titre.create_layout()
     elif pathname == "/stat":
         return stat.create_layout()
-
+    elif pathname == "/performance":
+        return performance.create_layout()
 
 
 
