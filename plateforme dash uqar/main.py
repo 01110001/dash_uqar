@@ -1,6 +1,7 @@
 import dash
 import datetime
 import pytz
+import plotly.figure_factory as ff
 from dash import Dash, dcc, html, Input, Output, dash_table
 import pandas as pd 
 import plotly.express as px 
@@ -9,6 +10,8 @@ import pandas_datareader as pdr
 import datetime
 import plotly.graph_objs as go
 from dash.exceptions import PreventUpdate
+import numpy as np
+import calendar
 from components.sidebar import (
     sidebar,
 )

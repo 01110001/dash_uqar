@@ -3,6 +3,7 @@ import requests
 from io import StringIO
 import dash_bootstrap_components as dbc
 from dash import html, dcc, dash_table
+import time
 
 # Replace this with your Google Drive file's ID
 file_id = "1TWd1pJQAfuxVn5_cws7zqlQmOKjb-5A8"
@@ -12,6 +13,7 @@ url = f"https://drive.google.com/uc?export=download&id={file_id}"
 url_2 = f"https://drive.google.com/uc?export=download&id={file_id_2}"
 
 response = requests.get(url)
+time.sleep(5)  # Add a delay of 5 seconds to being caught as a bot
 response_2 = requests.get(url_2)
 response_text = response.text
 response_text_2 = response_2.text
@@ -27,7 +29,7 @@ data.columns = ['Symbol', 'Date', 'Entreprise', 'Secteur', 'Ponderation', 'Valeu
 data_portefeuille.columns = ['Date','rendement','Valeur Portefeuille','dividende','none']
 data_portefeuille['Date'] = pd.to_datetime(data_portefeuille['Date'], format= '%d-%m-%Y')
 data_portefeuille = data_portefeuille.sort_values(by='Date')
-#data_portefeuille.set_index('Date', inplace=True)
+
 
 
 #sum of the valeur marchande
