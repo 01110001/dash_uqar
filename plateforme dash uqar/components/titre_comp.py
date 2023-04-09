@@ -13,7 +13,7 @@ url = f"https://drive.google.com/uc?export=download&id={file_id}"
 url_2 = f"https://drive.google.com/uc?export=download&id={file_id_2}"
 
 response = requests.get(url)
-time.sleep(5)  # Add a delay of 5 seconds to being caught as a bot
+time.sleep(5)  # Add a delay of 5 seconds to avoid being caught as a bot
 response_2 = requests.get(url_2)
 response_text = response.text
 response_text_2 = response_2.text

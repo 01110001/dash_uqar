@@ -30,6 +30,11 @@ from components.stat import (
 
 )
 
+from components.Accueil import (
+    stock_layout,
+
+)
+
 from components.performance import (
     fig_layout,
 
@@ -59,15 +64,17 @@ from Page import (
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP,dbc.icons.FONT_AWESOME], 
     meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1.0'}])
 
+stocks = [html.Div(className='stock') for _ in range(20)]
 
-
-app.layout = dbc.Container(
+app.layout = html.Div([
+    dbc.Container(
     dbc.Row(children=[
         dcc.Location(id="url"), 
         dbc.Col(sidebar),
         dbc.Col(id="page-content", width=9),
     ])
 )
+])
 
 
 
@@ -89,6 +96,8 @@ def display_page(pathname):
         return stat.create_layout()
     elif pathname == "/performance":
         return performance.create_layout()
+    elif pathname == "/":
+        return Accueil.create_layout()
 
 
 
