@@ -1,5 +1,5 @@
 import dash
-import datetime
+import datetime as dt
 import pytz
 import plotly.figure_factory as ff
 from dash import Dash, dcc, html, Input, Output, dash_table
@@ -12,6 +12,8 @@ import plotly.graph_objs as go
 from dash.exceptions import PreventUpdate
 import numpy as np
 import calendar
+import yfinance as yf
+
 from components.sidebar import (
     sidebar,
 )
@@ -30,10 +32,7 @@ from components.stat import (
 
 )
 
-from components.Accueil import (
-    stock_layout,
 
-)
 
 from components.performance import (
     fig_layout,
@@ -45,6 +44,9 @@ from components.contact_form import (
     contact_form,
 )
 
+from components.Accueil import (
+    stock_layout,
+)
 
 
 
@@ -52,9 +54,9 @@ from Page import (
     contact,
     equipe,
     titre,
-    Accueil,
     stat,
     performance,
+    Accueil,
 
 )
 
@@ -64,7 +66,7 @@ from Page import (
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP,dbc.icons.FONT_AWESOME], 
     meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1.0'}])
 
-stocks = [html.Div(className='stock') for _ in range(20)]
+
 
 app.layout = html.Div([
     dbc.Container(
@@ -98,7 +100,6 @@ def display_page(pathname):
         return performance.create_layout()
     elif pathname == "/":
         return Accueil.create_layout()
-
 
 
 
