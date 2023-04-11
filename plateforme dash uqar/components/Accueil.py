@@ -44,7 +44,7 @@ def get_performance_summary(tickers):
 
     end_date = dt.date.today()
     start_dates = {
-        '1 Mois': end_date - dt.timedelta(days=30),
+        'Ce mois-ci': end_date - dt.timedelta(days=30),
         '3 Mois': end_date - dt.timedelta(days=90),
         '6 Mois': end_date - dt.timedelta(days=180),
         'YTD': dt.date(end_date.year, 1, 1),
