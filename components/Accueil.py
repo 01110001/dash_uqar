@@ -31,10 +31,16 @@ custom_names = {
 
 def get_returns(tickers_list, start, end):
     data = yf.download(tickers_list, start=start, end=end)['Adj Close']
+    if data.empty:
+        return pd.DataFrame(columns=tickers_list)
     return data.pct_change().dropna()
 
+
 def get_cumulative_returns(returns, periods):
+    if returns.empty:
+        return pd.Series(np.nan, index=returns.columns)
     return ((1 + returns).cumprod() - 1).iloc[-1] * periods
+
 
 def get_performance_summary(tickers):
     # Flatten tickers dictionary into a list
