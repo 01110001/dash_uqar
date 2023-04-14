@@ -66,6 +66,9 @@ from Page import (
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP,dbc.icons.FONT_AWESOME], 
     meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1.0'}])
 
+# Add this line to suppress callback exceptions
+app.config.suppress_callback_exceptions = True
+
 server = app.server
 
 app.layout = html.Div([
@@ -102,7 +105,18 @@ def display_page(pathname):
         return Accueil.create_layout()
 
 
-
+@app.callback(
+    Output("send-button", "href"),
+    Input("name-input", "value"),
+    Input("email-input", "value"),
+    Input("message-input", "value"),
+)
+def update_mailto_link(name, email, message):
+    if name and email and message:
+        mailto_link = f"mailto:?subject=Contact from {name}&body={message}%0A%0AReply to: {email}"
+        return mailto_link
+    else:
+        return ""
 
 
 

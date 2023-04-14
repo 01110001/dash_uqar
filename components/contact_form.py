@@ -1,4 +1,3 @@
-
 import dash_bootstrap_components as dbc
 from dash import Dash, dcc, html, Input, Output
 # contact form component
@@ -77,3 +76,4 @@ contact_form = dbc.Col(
     className="mt-5 mb-5 pb-5 pt-5 bg-light rounded-3 shadow-lg p-3 mb-5 bg-body rounded border border-2 align-items-center justify-content-center",
 
 )
+

@@ -61,18 +61,7 @@ sidebar = dbc.Col(
                     active="exact", 
                     className="nav-link",
                 ),
-                 dbc.NavLink(
-                    custom_nav("Analyse par entreprise", "bi bi-file-earmark-bar-graph me-2"),
-                    href="/analyse-par-entreprise", 
-                    active="exact", 
-                    className="nav-link",
-                ),
-                dbc.NavLink(
-                    custom_nav("Calendrier économique", "bi bi-calendar3 me-2"),
-                    href="/calendrier", 
-                    active="exact", 
-                    className="nav-link",
-                ),
+
                 dbc.NavLink(
                     custom_nav("Titres détenus", "bi bi-wallet2 me-2"),
                     href="/Titres-detenus", 
@@ -80,12 +69,6 @@ sidebar = dbc.Col(
                     className="nav-link",
                     
                     
-                ),
-                dbc.NavLink(
-                    custom_nav("Recheche entreprise", "bi bi-search me-2"),
-                    href="/Recheche-entreprise", 
-                    active="exact", 
-                    className="nav-link",
                 ),
             ],
             vertical=True,
