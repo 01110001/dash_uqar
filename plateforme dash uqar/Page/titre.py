@@ -1,9 +1,9 @@
 from components.titre_comp import (
-    titre,
+    sectors_layout,
 
 
 )
 
 
 def create_layout():
-    return titre
+    return sectors_layout

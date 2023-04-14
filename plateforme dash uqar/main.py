@@ -23,7 +23,7 @@ from components.equipe_card import (
 )
 
 from components.titre_comp import (
-    titre,
+    sectors_layout,
 
 )
 

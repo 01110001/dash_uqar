@@ -39,55 +39,73 @@ total_liquidité = data.loc[data['Entreprise'] == 'Canadian Dollar', 'Valeur_mar
 total_ponderation = data.groupby('Secteur')['Ponderation'].sum()
 
 # ajout d'une colonne de rendement
-data['Rendement'] = (data['prix_actuelle'] - data['prix_achat']) / data['prix_achat'] * 100
+data['Rendement'] = ((data['prix_actuelle'] - data['prix_achat']) / data['prix_achat'] * 100).round(3)
 
 #distribution des entreprises par secteur
 grouped_sector=data.groupby('Secteur')['Entreprise'].count()
 
 # Create a Dash layout
 
-titre =  dbc.Col([
-        html.H4("Titre détenus", style={"margin": "15px"}),
+def generate_sector_table(data, sector):
+    sector_data = data[data['Secteur'] == sector]
+
+    return html.Div([
+        html.H4(f"Secteur: {sector}", style={"margin": "15px"}),
         html.Hr(),
         dash_table.DataTable(
-            id='table',
-            columns=[{"name": i, "id": i} for i in data.columns],
-            data=data.to_dict('records'),
-            style_table={
-                'maxHeight': '900px',
-                'border': '1px solid darkgray',
-            },
-            style_cell={
-                'textAlign': 'left',
-                'minWidth': '100px', 'width': '100px', 'maxWidth': '100px',
+            columns=[{"name": i, "id": i} for i in sector_data.columns],
+            data=sector_data.to_dict('records'),
+             style_cell={
+                'textAlign': 'center',
+                'padding': '10px',
+                'maxWidth': '50%',
                 'whiteSpace': 'normal',
-                'height': '100%',
-                'border': '1px solid darkgray',
-                'padding': '5px',
+                'font-family': 'Helvetica',
+                'fontSize': 14,
             },
             style_header={
                 'fontWeight': 'bold',
-                'backgroundColor': 'rgb(47, 68, 118)',
-                'border': '1px solid darkgray',
-                'color': 'white',
                 'textAlign': 'center',
+                'backgroundColor': '#f7f7f7',
+                'border': '1px solid black',
+                'font-family': 'Helvetica',
+                'fontSize': 12,
             },
             style_data_conditional=[
-                {
-                    'if': {'row_index': 'odd'},
-                    'backgroundColor': 'rgb(248, 248, 248)',
-                }
+                {'if': {'row_index': 'odd'}, 'backgroundColor': '#f7f7f7'},
+                {'if': {'row_index': 'even'}, 'backgroundColor': 'white'},
             ],
-            fixed_rows={'headers': True},
-            sort_action="native",
-            sort_mode="multi",
-            filter_action="native",
-            page_action="native",
-            page_size=10,
-        ),
-        html.Hr(),
-        html.H4("Total valeur marchande: " + str(total_valeur_marchande) + "$ CAD", style={"margin": "15px"}),
-        html.H4("Total liquidité: " + str(total_liquidité) + "$ CAD", style={"margin": "15px"}),
-    ])
+            style_table={
+                'maxWidth': '100%',
+                'align': 'center',
+                'border': 'thin lightgrey solid',
+            },
+            sort_action='native',
+            page_action='native',
+            page_current=0,
+        ), 
+    ], style={'marginBottom': '30px', 'marginTop': '30px'})
+
+
+sectors = data['Secteur'].unique()
+
+
+
+sectors_layout = html.Div([
+    html.Div([
+        html.H1("Résumé des titre détenus", style={'text-align': 'center', 'padding': '20px', 'color': '#4a4a4a'}),
+    ], style={'backgroundColor': '#ffffff', 'borderBottom': '3px solid #4a4a4a', 'marginBottom': '30px'}),
+
+    html.Div([
+        html.Div([generate_sector_table(data, sector) for sector in sectors],
+                 style={'display': 'flex', 'flexWrap': 'wrap', 'marginBottom': '30px'})
+    ]),
+], style={'font-family': 'Helvetica', 'margin': '0 auto', 'width': '80%'})
+
+
+
+
+
+
 
 
