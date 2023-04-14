@@ -5,7 +5,7 @@ from dash import dcc, html, Input, Output, dash_table
 import dash_bootstrap_components as dbc
 import datetime as dt
 import pandas as pd
-
+import numpy as np
 
 # Define the stocks you want to fetch data for
 tickers = {
