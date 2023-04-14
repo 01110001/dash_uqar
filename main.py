@@ -112,8 +112,9 @@ def display_page(pathname):
     Input("message-input", "value"),
 )
 def update_mailto_link(name, email, message):
+    recipient_email = "fpu-levis@uqar.ca"  # Replace this with the desired recipient's email address
     if name and email and message:
-        mailto_link = f"mailto:?subject=Contact from {name}&body={message}%0A%0AReply to: {email}"
+        mailto_link = f"mailto:{recipient_email}?subject=Contact from {name}&body={message}%0A%0AReply to: {email}"
         return mailto_link
     else:
         return ""
